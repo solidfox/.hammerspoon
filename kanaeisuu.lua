@@ -1,5 +1,3 @@
-local socket = require "socket"
-
 -- Japanese Eisuu & Kana
 
 local escape = 0x35
@@ -45,13 +43,13 @@ local function flagsChanged(event)
     --key down
     modifierEvents[keyCode] = {
       modifierOnly = true,
-      timePressed = socket.gettime()
+      timePressed = hs.timer.absoluteTime() --nanoseconds
     }
   else
     --key up
     modifierEvents[keyCode] = nil
-    local timePassed = socket.gettime() - modifierEvent.timePressed
-    local timedOut = timePassed > 0.7
+    local timePassed = hs.timer.absoluteTime() - modifierEvent.timePressed
+    local timedOut = timePassed > 700*10^6
     -- print(keyCode)
     if modifierEvent.modifierOnly and not timedOut then
       if keyCode == leftCommand then
