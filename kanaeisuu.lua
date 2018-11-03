@@ -19,8 +19,12 @@ local function eng()
   hs.keycodes.setLayout("U.S.")
 end
 
-local function swe()
+local function sweUs()
   hs.keycodes.setLayout("Swedish - US")
+end
+
+local function swe()
+  hs.keycodes.setLayout("Swedish - Pro")
 end
 
 local function albert()
@@ -57,9 +61,9 @@ local function flagsChanged(event)
       elseif keyCode == rightCommand then
         jp()
       elseif keyCode == leftOption then
-        swe()
+        sweUs()
       elseif keyCode == rightOption then
-        albert()
+        swe()
       end
     end
   end
